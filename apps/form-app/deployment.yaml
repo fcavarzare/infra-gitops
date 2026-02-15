@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: form-app
+  namespace: form-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: form-app
+  template:
+    metadata:
+      labels:
+        app: form-app
+    spec:
+      containers:
+        - name: form-app
+          image: fcavarzare/form-app:1.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
